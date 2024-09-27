@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/form.css">
+
+</head>
+<body>
+
+    <main class="dimensions-screen flex-center flex-column">
+        <div class="flex-center flex-column gap-0">
+            <h1>Bootcamp 2024</h1>
+            <p>by LHackSRT</p>
+        </div>
+        <div class="form-container bg-gray">
+            <div class="form-head">
+                <h2>Inscription</h2>
+            </div>
+            <form id="connexion-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </form>
+            <p>Vous avez déjà un compte ? <a href="connexion.html">Connectez-vous</a></p>
+        </div>
+    </main>
+    <script src="../scripts/inscription.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des utilisateurs</title>
+
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/spacing.css">
+    <link rel="stylesheet" href="../styles/user.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+
+</head>
+<body>
+    
+    <main class="flex-row w-100">
+        <div class="flex">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Menu</h3>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li>
+                            <a href="../pages/liste-utilisateurs.html" class="active">
+                                Liste des utilisateurs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../pages/liste-groupes.html">
+                                Liste des groupes
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+        <div class="flex-1">
+            <header>
+                <div class="flex-between padding-20">
+                    <div class="">
+                        <p>LHackSRT</p>
+                    </div>
+                    <div class="flex-center gap-20">
+                        <div>
+                            Nom utilisateur
+                        </div>
+                        <div class="user-avatar">
+                            NU
+                        </div>
+                    </div>
+                </div>
+                <nav class="flex-between">
+                   
+                </nav>
+            </header>
+            <section>
+                <div class="flex-between padding-20">
+                    <h2>Liste des utilisateurs</h2>
+                    <button class="btn btn-primary">Ajouter un utilisateur</button>
+                </div>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="../scripts/liste-utilisateur.js"></script>
+</body>
+</html>
