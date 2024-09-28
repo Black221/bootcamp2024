@@ -93,6 +93,7 @@
 	border: 1px solid var(--gray-color);
 	padding: 0 10px;
 	width: 320px;
+	background-color: white;
 }
 
 .form-search input {

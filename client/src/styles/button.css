@@ -16,3 +16,41 @@
     cursor: pointer;
 }
 
+.btn {
+    padding: 8px 10px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn.rounded {
+    border-radius: 30px;
+    padding: none;
+    width: 60px;
+    height: 60px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-tertiary {
+    background-color: var(--tertiary-color);
+}
