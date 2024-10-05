@@ -44,6 +44,14 @@
 	border: 1px solid var(--tertiary-color);
 }
 
+.form-group select {
+	width: var(--input-width);
+	height: var(--input-height);
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid var(--tertiary-color);
+}
+
 .w-fit {
 	width: fit-content;
 }
@@ -93,6 +101,7 @@
 	border: 1px solid var(--gray-color);
 	padding: 0 10px;
 	width: 320px;
+	background-color: white;
 }
 
 .form-search input {

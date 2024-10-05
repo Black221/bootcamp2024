@@ -11,10 +11,104 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/form.css">
     <link rel="stylesheet" href="../styles/button.css">
+    <link rel="stylesheet" href="../styles/modal.css">
 
 </head>
 <body>
-    
+
+    <div id="modal-add-group" class="modal">
+        <div class="modal-content">
+            <div class="modal-header flex-between align-center gap-20">
+                <h3>Ajouter un groupe</h3>
+                <div>
+                    <button id="btn-close-add">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 6L6 18M6 6L18 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">  
+                    <div class="form-group w-100">
+                        <label for="group-name">Nom du groupe</label>
+                        <input type="text" name="group-name" id="group-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer flex-row">
+                <button id="btn-cancel-add" class="btn btn-secondary">
+                    Annuler
+                </button>
+                <button id="btn-confirm-add" class="btn btn-primary">
+                    Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-remove-user" class="modal">
+       <div class="modal-content">
+            <div class="modal-header flex-between align-center gap-20">
+                <h3>Voulez-vous vraiment supprimer cet utilisateur ?</h3>
+                <div>
+                    <button id="btn-close-remove">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 6L6 18M6 6L18 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Vous êtes sur le point de supprimer l'utilisateur <strong id="remove-username"></strong>
+                </p>
+            </div>
+            <div class="modal-footer flex-row">
+                <button id="btn-cancel-remove" class="btn btn-secondary">
+                    Annuler
+                </button>
+                <button id="btn-confirm-remove" class="btn btn-danger">
+                    Supprimer
+                </button>
+            </div>
+       </div>
+    </div>
+
+    <div id="modal-transfer-user" class="modal">
+       <div class="modal-content">
+            <div class="modal-header flex-between align-center gap-20">
+                <h3>Voulez-vous vraiment transférer cet utilisateur ?</h3>
+                <div>
+                    <button id="btn-close-transfer">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 6L6 18M6 6L18 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Vous êtes sur le point de transférer l'utilisateur <strong id="transfer-username"></strong>
+                </p>
+                <div class="margin-top-10">
+                    <form action="" method="post">  
+                        <div class="form-group w-100">
+                            <label for="group">Groupe</label>
+                            <select name="group" id="group">
+                                <option value="1">DST 1</option>
+                                <option value="2">DST 2</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer flex-row">
+                <button id="btn-cancel-transfer" class="btn btn-secondary">
+                    Annuler
+                </button>
+                <button id="btn-confirm-transfer" class="btn btn-primary">
+                    Transférer
+                </button>
+            </div>
+       </div>
+    </div>
+
+
     <main>
         <header>
             <div class="flex-between padding-20">
@@ -31,7 +125,7 @@
                 </div>
             </div>
             <nav class="flex-between nav-links">
-                <div class="nav-tab-list">
+                <div class="nav-tab-list flex-1">
                     <a href="./mon-profil.html" class="nav-tab">
                         Mon profil
                     </a>
@@ -39,8 +133,8 @@
                         Mes groupes
                     </a>
                 </div>
-                <div class="flex-1">
-                    <button>
+                <div class="">
+                    <button class="btn btn-primary">
                         Deconnexion
                     </button>
                 </div>
@@ -57,9 +151,15 @@
                         DST 2
                     </a>
                 </div>
-                <div class="form-search">
-                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                    <input type="text" placeholder="Rechercher un utilisateur">
+                <div class="flex-row align-center">
+                    <div class="form-search">
+                        <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <input type="text" placeholder="Rechercher un utilisateur">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="addGroup()">
+                        Ajouter un groupe
+                    </button>
                 </div>
             </div>
 
@@ -71,10 +171,10 @@
 
                 <div class="user-card">
                     <div class="actions-list">
-                        <button id="btn-delete">
+                        <button class="btn-transfert" onclick="transferUser(3)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
-                        <button id="btn-transfert">
+                        <button class="btn-delete" onclick="removeUser(1)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
                     </div>
@@ -85,10 +185,10 @@
                 </div>
                 <div class="user-card">
                     <div class="actions-list">
-                        <button id="btn-delete">
+                        <button class="btn-transfert" onclick="transferUser(3)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
-                        <button id="btn-transfert">
+                        <button class="btn-delete" onclick="removeUser(2)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
                     </div>
@@ -99,10 +199,10 @@
                 </div>
                 <div class="user-card">
                     <div class="actions-list">
-                        <button id="btn-delete">
+                        <button class="btn-transfert" onclick="transferUser(3)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
-                        <button id="btn-transfert">
+                        <button class="btn-delete" onclick="removeUser(3)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
                     </div>
@@ -114,10 +214,10 @@
 
                 <div class="user-card">
                     <div class="actions-list">
-                        <button id="btn-delete">
+                        <button class="btn-transfert" onclick="transferUser(3)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 4V20M17 20L13 16M17 20L21 16M7 20V4M7 4L3 8M7 4L11 8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
-                        <button id="btn-transfert">
+                        <button class="btn-delete" onclick="removeUser(4)">
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </button>
                     </div>
@@ -131,6 +231,12 @@
                 <button class="position-absolute right-0 center-y slider-btn">
                     <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14,43.7V8.3c0-1,1.3-1.7,2.2-0.9l21.2,17.3c0.8,0.6,0.8,1.9,0,2.5L16.2,44.7C15.3,45.4,14,44.8,14,43.7z"></path> </g></svg>
                 </button>
+            </div>
+
+            <div class="flex-center margin-top-64">
+                <a href="./parrainage.html" class="btn btn-primary" style="text-decoration: none;">
+                    Lancer le parrainage
+                </a>
             </div>
         </div>
     </main>
